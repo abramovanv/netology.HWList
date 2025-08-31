@@ -29,11 +29,11 @@ public class Main {
             switch (choice) {
 
                 case 1: {
-                    Add();
+                    add();
                     break;
                 }
                 case 2: {
-                    PrintList();
+                    printList();
                     break;
                 }
                 case 3: {
@@ -58,14 +58,14 @@ public class Main {
         String inputname = scanner.nextLine();
         List<String> help = new ArrayList<>();
 
-        for (String s : job) {
-            if (s.indexOf(inputname) == -1) {
-                help.add(s);
+        for (String task : job) {
+            if (task.indexOf(inputname) == -1) {
+                help.add(task);
             }
         }
         job.clear();
         job.addAll(help);
-        PrintList();
+        printList();
     }
 
     public static void deleteByIndex() {
@@ -83,10 +83,10 @@ public class Main {
         if (choice <= job.size()) {
             job.remove(choice - 1);
             System.out.println("Удалено!");
-            PrintList();
+            printList();
         } else {
             System.out.println("Такого дела не существует!");
-            PrintList();
+            printList();
         }
 
     }
@@ -95,18 +95,18 @@ public class Main {
         System.out.print("Введите название задачи для удаления: ");
         Scanner scanner = new Scanner(System.in);
         String inputname = scanner.nextLine();
-        int pos = job.indexOf(inputname);
-        if (pos >= 0) {
-            job.remove(pos);
+        int position = job.indexOf(inputname);
+        if (position >= 0) {
+            job.remove(position);
             System.out.println("Удалено!");
-            PrintList();
+            printList();
         } else {
             System.out.println("Такого дела не существует!");
-            PrintList();
+            printList();
         }
     }
 
-    public static void Add() {
+    public static void add() {
         System.out.print("Введите название задачи: ");
         Scanner scanner = new Scanner(System.in);
         String inputjob = scanner.nextLine();
@@ -116,16 +116,16 @@ public class Main {
         } else {
             System.out.println("Уже есть в списке дел!");
         }
-        PrintList();
+        printList();
 
     }
 
-    public static void PrintList() {
-        int j = 1;
+    public static void printList() {
+        int shiftnum = 1;
         System.out.println("Ваш список дел:");
         for (int i = 0; i < job.size(); i++) {
-            System.out.println((j) + ". " + job.get(i));
-            j++;
+            System.out.println((shiftnum) + ". " + job.get(i));
+            shiftnum++;
         }
         System.out.println();
     }
